@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 )
 
-//UserInfo
+// UserInfo 微信小程序用户信息
 type UserInfo struct {
 	OpenID    string `json:"openId"`
 	Nickname  string `json:"nickName"`
@@ -21,6 +21,7 @@ type UserInfo struct {
 	} `json:"watermark"`
 }
 
+// Decrypt decrypt the crypted data and returns user obj and raw data
 func Decrypt(cryptedData, sessionKey, iv string) (data *UserInfo, rawData []byte, err error) {
 	var cryptedDataBytes, encryptedKeyBytes, ivBytes []byte
 	cryptedDataBytes, err = base64.StdEncoding.DecodeString(cryptedData)
